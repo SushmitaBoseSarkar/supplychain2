@@ -56,7 +56,7 @@ box3=new Box(400, 360, 200, 15);
 function draw() {
   
  
-  Engine.update(engine);
+ // Engine.update(engine);
   rectMode(CENTER);
   background(0);
   packageSprite.x= packageBody.position.x 
@@ -68,10 +68,24 @@ function draw() {
   drawSprites();
  
 }
- if (keyCode === DOWN_ARROW) {
-	Matter.Body.setStatic(packageBody,  false)
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
+
+    helicopterSprite.x=helicopterSprite.x-20;    
+    translation={x:-20,y:0}
+    Matter.Body.translate(packageBody, translation)
+
+
+  } else if (keyCode === RIGHT_ARROW) {
+    helicopterSprite.x=helicopterSprite.x+20;
+    translation={x:20,y:0}
+    Matter.Body.translate(packageBody, translation)
+  }
+  else if (keyCode === DOWN_ARROW) {
+    Matter.Body.setStatic(packageBody,false);
     
   }
+}
 
 
 
